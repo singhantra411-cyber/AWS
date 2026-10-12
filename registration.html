@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Event Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        form {
+            background-color: white;
+            width: 350px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: darkblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #message {
+            font-weight: bold;
+            color: green;
+        }
+
+        #error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<script src="script.js"></script>
+   
+    <h1 id="heading">Student Event Registration</h1>
+
+   
+    <button onclick="changeFontSize()">Change Heading Font Size</button>
+
+    
+    <button onclick="toggleForm()">Show/Hide Form</button>
+
+    
+    <form id="registrationForm">
+
+        <input type="text" id="studentName"
+               placeholder="Enter Student Name">
+
+        <input type="text" id="rollNumber"
+               placeholder="Enter Roll Number">
+
+        <input type="email" id="email"
+               placeholder="Enter Email Address">
+
+        <select id="event">
+            <option value="">Select an Event</option>
+            <option value="Annual Fest">Annual Fest</option>
+            <option value="Tech Symposium">Tech Symposium</option>
+            <option value="Sports Day">Sports Day</option>
+            <option value="Art Competition">Art Competition</option>
+        </select>
+
+        <br>
+
+        <button type="button" onclick="registerStudent()">
+            Register
+        </button>
+
+    </form>
+
+   
+    <p id="message"></p>
+    <p id="error"></p>
+
+    <script>
+
+       
+        function registerStudent() {
+
+            let name = document.getElementById("studentName").value;
+            let roll = document.getElementById("rollNumber").value;
+            let email = document.getElementById("email").value;
+            let event = document.getElementById("event").value;
+
+           
+            if (name.trim() === "" ||
+                roll.trim() === "" ||
+                email.trim() === "" ||
+                event === "") {
+
+                document.getElementById("error").innerHTML =
+                    "Error: Please fill in all required fields.";
+
+                document.getElementById("message").innerHTML = "";
+            }
+            else {
+
+                document.getElementById("message").innerHTML =
+                    "Congratulations, " + name +
+                    "! You have successfully registered for " + event + ".";
+
+                document.getElementById("error").innerHTML = "";
+            }
+        }
+
+        
+        function changeFontSize() {
+
+            let heading = document.getElementById("heading");
+
+            if (heading.style.fontSize === "40px") {
+                heading.style.fontSize = "24px";
+            }
+            else {
+                heading.style.fontSize = "40px";
+            }
+        }
+
+       
+        function toggleForm() {
+
+            let form = document.getElementById("registrationForm");
+
+            if (form.style.display === "none") {
+                form.style.display = "block";
+            }
+            else {
+                form.style.display = "none";
+            }
+        }
+
+    </script>
+
+</body>
+</html>
+

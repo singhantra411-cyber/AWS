@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Management</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        input {
+            padding: 10px;
+            width: 220px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: darkblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .event-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .event-card {
+            background-color: white;
+            border: 2px solid darkblue;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px;
+            width: 220px;
+        }
+
+        .event-card h2 {
+            color: darkblue;
+        }
+
+        .highlight {
+            background-color: lightblue;
+            border: 3px solid blue;
+        }
+
+        #message {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="script.js"></script>
+
+    <h1>College Event Management</h1>
+
+    <!-- Input field and Add Event button -->
+    <input type="text" id="eventName" placeholder="Enter event name">
+
+    <button onclick="addEvent()">Add Event</button>
+
+    <!-- Display entered event name -->
+    <h2 id="displayEvent">New event will appear here</h2>
+
+    <!-- Confirmation message -->
+    <p id="message"></p>
+
+    <!-- Event Cards -->
+    <div class="event-container">
+
+        <div class="event-card" id="card1">
+            <h2>Annual Fest</h2>
+            <p><b>Date:</b> 15 November 2026</p>
+            <p><b>Venue:</b> College Auditorium</p>
+            <p>A cultural festival featuring music, dance, and fun activities.</p>
+        </div>
+
+        <div class="event-card" id="card2">
+            <h2>Tech Symposium</h2>
+            <p><b>Date:</b> 20 November 2026</p>
+            <p><b>Venue:</b> Computer Lab</p>
+            <p>An event featuring technology projects, coding, and innovation.</p>
+        </div>
+
+        <div class="event-card" id="card3">
+            <h2>Sports Day</h2>
+            <p><b>Date:</b> 25 November 2026</p>
+            <p><b>Venue:</b> College Ground</p>
+            <p>A day of exciting sports competitions and team activities.</p>
+        </div>
+
+        <div class="event-card" id="card4">
+            <h2>Art Competition</h2>
+            <p><b>Date:</b> 30 November 2026</p>
+            <p><b>Venue:</b> Seminar Hall</p>
+            <p>A creative competition for students to showcase their artistic talents.</p>
+        </div>
+
+    </div>
+
+    <!-- Button to change an existing event card -->
+    <button onclick="changeCard()">Change Event Card</button>
+
+    <script>
+
+        // Function to add an event name
+        function addEvent() {
+
+            let name = document.getElementById("eventName").value;
+
+            if (name.trim() === "") {
+                alert("Please enter an event name!");
+                return;
+            }
+
+            document.getElementById("displayEvent").innerHTML =
+                "New Event: " + name;
+
+            document.getElementById("message").innerHTML =
+                "Event name submitted successfully!";
+
+            document.getElementById("eventName").value = "";
+        }
+
+        // Function to change an existing event card
+        function changeCard() {
+
+            let card = document.getElementById("card1");
+
+            card.classList.toggle("highlight");
+
+            card.querySelector("h2").innerHTML =
+                card.classList.contains("highlight")
+                ? "Annual Fest - Featured!"
+                : "Annual Fest";
+        }
+
+    </script>
+
+</body>
+</html>
+
